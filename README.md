@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chat UI with Interactive Information Display
+
+A responsive web application built with Next.js and shadcn/ui featuring a split-screen layout with a chat interface and interactive information display.
+
+## Features
+
+- **Split-Screen Layout**: 60/40 split on desktop (information/chat)
+- **Responsive Design**: Stacked layout on mobile with toggle between views
+- **Real-Time Chat Interface**: Send and receive messages with timestamps
+- **Interactive Information Display**: Dynamic content with filters and data visualization
+- **Theme Support**: Light/dark mode toggle
+- **Modern UI**: Built with shadcn/ui components and Tailwind CSS
+
+## Tech Stack
+
+- **Framework**: Next.js 15.3.5 with TypeScript
+- **UI Library**: shadcn/ui
+- **Styling**: Tailwind CSS
+- **Theme Management**: next-themes
+- **Icons**: Built-in SVG icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ and npm installed
+
+### Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+├── app/
+│   ├── globals.css       # Global styles and Tailwind directives
+│   ├── layout.tsx        # Root layout with theme provider
+│   └── page.tsx          # Main page with split-screen layout
+├── components/
+│   ├── ui/               # shadcn/ui components
+│   ├── chat/             # Chat interface components
+│   ├── info-display/     # Information display components
+│   ├── theme-provider.tsx # Theme provider wrapper
+│   └── theme-toggle.tsx   # Theme toggle button
+├── lib/
+│   └── utils.ts          # Utility functions (cn helper)
+└── public/               # Static assets
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Key Components
 
-## Deploy on Vercel
+### ChatInterface
+- Message display with sender alignment
+- Real-time message updates
+- Input field with Enter key support
+- Timestamp display for each message
+- Simulated responses for demo purposes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### InfoDisplay
+- Interactive filters that update data
+- Data visualization placeholders
+- Responsive grid layout
+- Animated transitions on interactions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Responsive Behavior
+
+- **Desktop (≥768px)**: Side-by-side panels with 60/40 split
+- **Mobile (<768px)**: Stacked layout with toggle button to switch views
+
+## Customization
+
+### Adding New Content Types
+1. Create new components in `components/info-display/`
+2. Import and use them in the InfoDisplay component
+3. Add corresponding state management as needed
+
+### Extending Chat Features
+1. Modify `components/chat/chat-interface.tsx`
+2. Add features like:
+   - File uploads
+   - Typing indicators
+   - Read receipts
+   - Message reactions
+
+### API Integration
+The current implementation uses local state. To connect to a backend:
+1. Replace mock data with API calls
+2. Implement WebSocket connection for real-time chat
+3. Add authentication and user management
+
+## Performance Optimizations
+
+- Component-based architecture for code splitting
+- React.memo and useCallback for optimized re-renders
+- Lazy loading for heavy components
+- Tailwind CSS for minimal CSS bundle size
+
+## Accessibility
+
+- ARIA labels on interactive elements
+- Keyboard navigation support
+- Screen reader friendly components
+- Proper heading hierarchy
+- Color contrast compliance
+
+## Future Enhancements
+
+- WebSocket integration for real-time updates
+- User authentication and profiles
+- File upload support in chat
+- Advanced data visualizations
+- Offline support with service workers
+- Internationalization (i18n)
+
+## License
+
+This project is built as per the provided PRD specifications.
