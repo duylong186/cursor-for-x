@@ -15,13 +15,14 @@ export interface Message {
 
 interface ChatInterfaceProps {
   className?: string
+  content?: string
 }
 
-export function ChatInterface({ className }: ChatInterfaceProps) {
+export function ChatInterface({ className, content = "Welcome to the chat interface!" }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      content: "Welcome to the chat interface!",
+      content: content,
       sender: "other",
       timestamp: new Date(),
     },
