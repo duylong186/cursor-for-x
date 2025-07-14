@@ -3,7 +3,9 @@
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { StackedBarChart } from "@/components/charts/stacked-bar-chart"
+import { IncomeStatement } from "@/components/charts/income-statement"
 
 interface InfoDisplayProps {
   className?: string
@@ -30,9 +32,10 @@ export function InfoDisplay({ className, summary }: InfoDisplayProps) {
   }
 
   return (
-    <Card className={`w-full h-full p-6 ${className}`}>
-      <h2 className="text-2xl font-bold mb-4">Overview</h2>
-      <div className="space-y-2">
+    <Card className={`w-full h-full flex flex-col ${className}`}>
+      <div className="p-6 overflow-y-auto">
+        <h2 className="text-2xl font-bold mb-4">Overview</h2>
+        <div className="space-y-2">
           <h3 className="font-semibold">Yếu tố tương tác</h3>
           <div className="flex gap-2 flex-wrap">
             {["Daily", "Monthly", "Quarterly", "Yearly"].map((filter) => (
@@ -48,12 +51,12 @@ export function InfoDisplay({ className, summary }: InfoDisplayProps) {
             ))}
           </div>
         </div>
-      {activeFilter && (
-              <span className="block mt-2 text-primary">
-                Active filter: {activeFilter}
-              </span>
-            )}
-      <div className="space-y-4 mt-6">
+        {activeFilter && (
+          <span className="block mt-2 text-primary">
+            Active filter: {activeFilter}
+          </span>
+        )}
+        <div className="space-y-4 mt-6">
         <div className="p-4 bg-muted rounded-lg">
           <h3 className="font-semibold mb-2">Summary</h3>
           <p className="text-sm text-muted-foreground">
@@ -72,10 +75,23 @@ export function InfoDisplay({ className, summary }: InfoDisplayProps) {
           </Card>
         </div>
 
-        <div className="mt-6 p-4 border rounded-lg">
-          <h3 className="font-semibold mb-2"></h3>
-          <div className="h-64">
-            <StackedBarChart />
+          <div className="mt-6">
+            <Tabs defaultValue="graph" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 max-w-md">
+                <TabsTrigger value="graph">Graph</TabsTrigger>
+                <TabsTrigger value="data">Data</TabsTrigger>
+              </TabsList>
+              <TabsContent value="graph" className="mt-4">
+                <div className="p-4 border rounded-lg">
+                  <div className="h-64">
+                    <StackedBarChart />
+                  </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="data" className="mt-4 overflow-x-auto">
+                <IncomeStatement />
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </div>

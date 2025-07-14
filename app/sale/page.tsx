@@ -32,9 +32,9 @@ export default function Sale() {
       {/* Main content area with padding for header */}
       <div className="flex w-full pt-14 h-full">
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full">
+        <div className="hidden md:flex w-full h-full">
           {/* Left Panel - Information Display (60%) */}
-          <div className="w-[60%] p-4">
+          <div className="w-[60%] p-4 h-full overflow-hidden">
             <InfoDisplay summary="từ đầu tháng đến nay, đại lý đã bán ra 43 xe, trong đó các dòng altis, vios và cross vẫn giữ phong độ tốt về doanh số. người bán hàng xuất sắc nhất hiện tại là [trần anh quân] với 13 xe bán ra, vượt chỉ tiêu tháng chỉ trong 12 ngày.hiện tại, tổng số hợp đồng tồn đang xử lý là 21, chủ yếu đang chờ xe về kho và bổ sung hồ sơ ngân hàng. trong nửa đầu tháng, đội ngũ đã ký mới thêm 29 hợp đồng, cho thấy nhu cầu mua xe vẫn ổn định, đặc biệt từ nhóm khách hàng chạy dịch vụ và các doanh nghiệp nhỏ. Về kế hoạch giao xe, từ nay đến cuối tháng dự kiến giao 35 xe, trong đó phần lớn là các đơn hàng trả góp đã hoàn tất hồ sơ, hẹn lịch giao từ 14 đến 26/7." />
           </div>
 
